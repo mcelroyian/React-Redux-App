@@ -12,15 +12,19 @@ const Breweries = ({ isLoading, locations, state, city, zip, error, getBrews }) 
     
     return (
         <main>
-            <h1>Locations:</h1>
+            <div className='container'>
 
              {/* LOADING */}
              {isLoading && <h2>Loading data...</h2>}
 
              {/* DATA HAS ARRIVED */}
-             {!isLoading && locations && (locations.map(local => <Location local={local} key={local.id}/>))}
+             <div className='tile is-ancestor locations'>
+             <div className='tile is-parent'>
+                {!isLoading && locations && (locations.map(local => <Location local={local} key={local.id}/>))}
+             </div>
+             </div>
             
-
+            </div>
         </main>
     )
 }

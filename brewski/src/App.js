@@ -1,6 +1,6 @@
 import React from 'react';
 import Breweries from './components/Breweries'
-import './App.sass';
+import './App.css';
 
 function App() {
   return (
