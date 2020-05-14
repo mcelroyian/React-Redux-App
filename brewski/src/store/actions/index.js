@@ -20,3 +20,14 @@ export const getBrews = (endpoint = 'by_state', value = 'Mississippi') => dispat
             dispatch({ type: GET_BREWS_FAILURE, payload: err.data })
         })
 }
+
+export const SEARCH_INPUT_CHANGE = "SEARCH_INPUT_CHANGE"
+export const SEARCH_INPUT_SUBMIT = "SEARCH_INPUT_SUBMIT"
+
+export const handleChanges = e => {
+    return { type: SEARCH_INPUT_CHANGE, payload: e }
+}
+
+export const handleSubmit = term => {
+    return { type: SEARCH_INPUT_SUBMIT, payload: term }
+}

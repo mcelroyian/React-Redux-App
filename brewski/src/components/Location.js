@@ -1,13 +1,17 @@
 import React from 'react'
+import { Grid, Paper } from '@material-ui/core'
 
 const Location = ({local}) => {
     return (
 
         
-            <div className='is-child is-4 box'>
-                <h2 className='title'><a href={local.website_url}>{local.name}</a></h2>
+            <Grid item xs={4}>
+                <Paper >
+                <h2 className='title'>{local.website_url ? <a href={local.website_url}>{local.name}</a> : local.name}</h2>
                 <h3 className='subtitle'>{local.city}, {local.state}</h3>
-        </div>
+                </Paper>
+
+        </Grid>
 
     )
 }

@@ -2,13 +2,25 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { getBrews } from '../store/actions'
 import Location from '../components/Location'
+import { Grid } from '@material-ui/core'
 
 const Breweries = ({ isLoading, locations, state, city, zip, error, getBrews }) => {
     
     //Get default data on pageload
     useEffect(() => {
         getBrews()
-    }, [getBrews])
+        if (city) {
+            getBrews('by_city', city)
+        }
+    }, [getBrews, city])
+
+    useEffect(() => {
+        console.log('entered second useEffect')
+        if (state) {
+            console.log('entered if statement')
+         getBrews('by_state', state)
+        }
+    }, [state, getBrews])
     
     return (
         <main>
@@ -18,11 +30,11 @@ const Breweries = ({ isLoading, locations, state, city, zip, error, getBrews }) 
              {isLoading && <h2>Loading data...</h2>}
 
              {/* DATA HAS ARRIVED */}
-             <div className='tile is-ancestor locations'>
-             <div className='tile is-parent'>
+             
+             <Grid container spacing={2}>
                 {!isLoading && locations && (locations.map(local => <Location local={local} key={local.id}/>))}
-             </div>
-             </div>
+             </Grid>
+             
             
             </div>
         </main>
